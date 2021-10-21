@@ -13,7 +13,11 @@ class UploadController extends Controller
      */
     public function index()
     {
-        //
+        abort_if(Gate::denies('upload_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $uploads = Upload::all();
+
+        return view('uploads.index', compact('uploads'));
     }
 
     /**
@@ -23,7 +27,9 @@ class UploadController extends Controller
      */
     public function create()
     {
-        //
+        abort_if(Gate::denies('upload_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return view('uploads.create');
     }
 
     /**
@@ -34,7 +40,9 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Upload::create($request->validated());
+
+        return redirect()->route('uploads.index');
     }
 
     /**
@@ -45,7 +53,9 @@ class UploadController extends Controller
      */
     public function show($id)
     {
-        //
+        abort_if(Gate::denies('upload_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return view('uploads.show', compact('upload'));
     }
 
     /**
@@ -56,7 +66,9 @@ class UploadController extends Controller
      */
     public function edit($id)
     {
-        //
+        abort_if(Gate::denies('upload_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return view('uploads.edit', compact('upload'));
     }
 
     /**
@@ -68,7 +80,9 @@ class UploadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $upload->update($request->validated());
+
+        return redirect()->route('uploads.index');
     }
 
     /**
@@ -79,6 +93,10 @@ class UploadController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort_if(Gate::denies('upload_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $upload->delete();
+
+        return redirect()->route('uploads.index');
     }
 }
