@@ -12,5 +12,8 @@ class Upload extends Model
     protected $fillable = [
         'title' ,
         'description',
+        'duration',
+        'assignedLesson',
+        'lessonType'
     ];
 }

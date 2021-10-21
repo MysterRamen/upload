@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Gate;
+// use Illuminate\Support\Facades\Gate;
 
 class StoreUploadRequest extends FormRequest
 {
@@ -14,7 +14,7 @@ class StoreUploadRequest extends FormRequest
      */
     public function authorize()
     {
-        return Gate::allows('upload_access');
+        return true;
     }
 
     /**

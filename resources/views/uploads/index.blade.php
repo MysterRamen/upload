@@ -92,13 +92,14 @@
 		
 		
 		<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-		<x-jet-button>
-			{{ __('Update') }}
-		</x-jet-button>
-		<x-jet-danger-button>
-			{{ __('Delete') }}
-			</x-jet-button>
-		</td>
+			<a href="{{ route('uploads.show', $upload->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
+			<a href="{{ route('uploads.edit', $upload->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
+
+			<form class="inline-block" action="{{ route('uploads.destroy', $upload->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+				<input type="hidden" name="_method" value="DELETE">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2" value="Delete">
+			</form>
 		</td>
 		</tr>
 		@endforeach
