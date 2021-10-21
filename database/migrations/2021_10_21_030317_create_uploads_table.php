@@ -16,7 +16,13 @@ class CreateUploadsTable extends Migration
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
+            $table->integer('duration');
+            $table->string('assignedLesson');
+            $table->string('lessonType');
+            $table->string('filename');
+            $table->string('fileExtension');
+            $table->integer('fileSize');
             $table->timestamps();
             $table->softDeletes();
         });
