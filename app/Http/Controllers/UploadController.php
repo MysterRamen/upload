@@ -30,6 +30,9 @@ class UploadController extends Controller
 
     public function store(StoreUploadRequest $request)
     {
+
+           
+        
         Upload::create($request->validated());
 
         return redirect()->route('uploads.index');

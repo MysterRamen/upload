@@ -24,3 +24,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
     Route::resource('uploads', \App\Http\Controllers\UploadController::class);
 
+    // Route::resource('uploadstation', [\App\Http\Controllers\UploadstationController::class, 'store']);
+

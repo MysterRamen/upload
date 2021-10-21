@@ -24,6 +24,11 @@
                         {{ __('Uploads') }}
                     </x-jet-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('uploadstation.index') }}" :active="request()->routeIs('uploadstation.index')">
+                        {{ __('Uploading Station') }}
+                    </x-jet-nav-link>
+                </div>
 
                 
             </div>
